@@ -1,6 +1,6 @@
 module.exports = {
     
-    "rules": {
+    "rules": { 
         "semi": ["error", "always"],
         "quotes": ["error", "double"]
     }
