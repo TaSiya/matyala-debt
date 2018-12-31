@@ -1,4 +1,4 @@
-module.exports = (app, query) => {
+module.exports = (query) => {
   async function all (req, res) {
     try {
       res.send('I got it working')

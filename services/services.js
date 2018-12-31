@@ -7,6 +7,32 @@ module.exports = (pool) => {
     clients.id = debts.user_id`);
     return result.rows;
   }
+  async function specificUser(username) {
+    const result = await pool.query(`select id, name, username, age, r1, r1paid, game, gamepaid, address1
+    from clients
+    join debts on
+    clients.id = debts.user_id
+    where username=$1`,[username]);
+    return result.rows;
+  }
+
+  // Filtering
+  async function filterByName(name) {
+    const result = await pool.query(`select id, name, username, age, r1, r1paid, game, gamepaid, address1
+    from clients
+    join debts on
+    clients.id = debts.user_id
+    where name=$1`,[name]);
+    return result.rows;
+  }
+  async function filterByAge(age) {
+    const result = await pool.query(`select id, name, username, age, r1, r1paid, game, gamepaid, address1
+    from clients
+    join debts on
+    clients.id = debts.user_id
+    where age=$1`,[age]);
+    return result.rows;
+  }
 
   // Client table queries
   async function insertUserData (data) {
@@ -49,8 +75,17 @@ module.exports = (pool) => {
       await insertDebt(data);
     }
   }
+
+
+  // Updating
+  async function updateDebt(id) {
+    await pool.query(``)
+  } 
   return {
     allData,
+    specificUser,
+    filterByName,
+    filterByAge,
     insertUserDetails,
     getUserData,
     insertUserDebts,
