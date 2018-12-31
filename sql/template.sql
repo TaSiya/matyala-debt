@@ -1,4 +1,4 @@
-DROP TABLE clients, debt ;
+DROP TABLE clients, debts ;
 create table clients(
   id serial primary key not null,
   name text not null,
