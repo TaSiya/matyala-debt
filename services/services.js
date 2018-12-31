@@ -69,6 +69,7 @@ module.exports = (pool) => {
     const userData = await getUserDebts(data.user_id);
     if(userData.length != 0) {
       // Update the info for the current user
+      const debtData = userData[0];
       
       return false;
     } else {
@@ -78,8 +79,8 @@ module.exports = (pool) => {
 
 
   // Updating
-  async function updateDebt(id) {
-    await pool.query(``)
+  async function updateDebt(data,id) {
+    await pool.query(`update debts set r1 =$1, r1paid =$2, game=$3, gamepaid=$4 where user_id=$5`,data.r1, data.r1paid, data.game, data.gamepaid,id)
   } 
   return {
     allData,

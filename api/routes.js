@@ -1,13 +1,28 @@
 module.exports = (query) => {
-  async function all (req, res) {
+  async function home (req, res) {
     try {
-      res.send('I got it working')
+      // Will load the default single page to update info
+      res.send('Just tomake sure its working')
     } catch (err) {
 
     }
   }
-
+  async function all (req, res) {
+    try{
+      const result = await query.allData();
+      res.json({
+        status : 'success',
+        response : result
+      })
+    } catch(err) {
+      res.json({
+        status : 'error',
+        response : err.stack
+      })
+    }
+  }
   return {
+    home,
     all
   }
 }
