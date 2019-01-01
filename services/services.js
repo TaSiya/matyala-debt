@@ -36,9 +36,9 @@ module.exports = (pool) => {
 
   // Client table queries
   async function insertUserData (data) {
-    await pool.query(`insert into clients (name,username,age,address1,address2,address3) 
+    await pool.query(`insert into clients (name,username,age,address1) 
     values 
-    ($1,$2,$3,$4,$5,$6)`,[data.name,data.username,data.age,data.address1,data.address2,data.address3])
+    ($1,$2,$3,$4)`,[data.name,data.username,data.age,data.address1])
   }
   async function insertUserDetails (data){
     const userData = await getUserData(data.username);

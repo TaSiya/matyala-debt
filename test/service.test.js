@@ -9,9 +9,7 @@ describe('Debt management App', () => {
         name : 'odwa',
         username : 'o.d',
         age : 18,
-        address1 : `M19 Bonkolo Street`,
-        address2 : `Khayelitsha`,
-        address3 : 7784
+        address1 : `M19 Bonkolo Street`
       }
       await service.insertUserDetails(userData);
       const data = await service.getUserData('o.d');
