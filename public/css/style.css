@@ -1,0 +1,27 @@
+/* Custom Styles */
+
+body{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+
+}
+
+/* Custom style nav */
+
+.custom-nav{
+  background: linear-gradient(left,#0ef7ff77,#05f7ce);
+  background: -webkit-linear-gradient(left,#0ef7ff77,#05f7ce);
+  background: -moz-linear-gradient(left,#0ef7ff77,#05f7ce);
+  background: -ms-linear-gradient(left,#0ef7ff77,#05f7ce);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8)
+}
+.custom-nav ul li a{
+  color: white!important;
+}
+.navbar-brand{
+  color: white!important;
+}
+.content{
+  margin-top: 50px;
+}
