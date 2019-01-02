@@ -77,6 +77,28 @@ module.exports = (pool) => {
     }
   }
 
+  // Employee table
+  async function insertEmployee(data) {
+    await pool.query(`insert into employees 
+    (name,username,email,password) values 
+    ($1,$2,$3,$4)`, [data.name, data.username, data.email, data.password]);
+  }
+  async function getEmployeeByUsername(username) {
+    const result = await onvolumechange.query(` select * from employees where username =$1`,[username]);
+    return result.rows;
+  }
+  async function tryInsertEmployee(data) {
+    const userData = await getEmployeeByUsername(data.username);
+    if (userData == 0) {
+      // Insert new employee
+      await insertEmployee(data);
+      return true;
+    } else {
+      // User already exists
+
+      return false
+    }
+  }
 
   // Updating
   async function updateDebt(data,id) {
@@ -90,6 +112,7 @@ module.exports = (pool) => {
     insertUserDetails,
     getUserData,
     insertUserDebts,
-    getUserDebts
+    getUserDebts,
+    getEmployeeByUsername
   }
 }
