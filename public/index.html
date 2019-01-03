@@ -55,61 +55,104 @@
     <div class="container sign-up-form">
       <div class="row">
         <div class="col-md-8 content">
-          <h1>Employee login</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos exercitationem consequuntur facilis
-            asperiores architecto! Obcaecati quaerat voluptatibus pariatur alias illo?</p>
+          <h1>Debt manageent users</h1>
+          <p>This page is used only to create new administration users and login.</p>
+          <h5>Note:</h5>
+          <p>Users can be responsible for manupulating the data from the API.</p>
         </div>
-        <div class="col-md-4 content">
-          <div class="card">
-            <div class="card-header">
-              <div class="row">
-                <div class="col-md-9">
-                  <h3 class="form-heading">Signup</h3>
-                  <p>Account for employees only</p>
-                </div>
-                <div class="col-md-3">
-                  <i class="fa fa-pencil-alt fa-2x"></i>
+        <div class="col-md-4 content" id="forms">
+          <div v-if="signup" class="signup-cover" id="signup-form">
+            <div class="card">
+              <div class="card-header">
+                <div class="row">
+                  <div class="col-md-9">
+                    <h3 class="form-heading">Signup</h3>
+                    <p>Account for employees only</p>
+                  </div>
+                  <div class="col-md-3">
+                    <i class="fa fa-pencil-alt fa-2x"></i>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="card-body">
-              <form id="signup-form" @submit="checkForm" action="https://vuejs.org/" method="post">
-                <p v-if="errors.length">
-                  <b>Please correct the following error(s):</b>
-                  <ul>
-                    <li v-for="error in errors">{{ error }}</li>
-                  </ul>
-                </p>
-                <div class="form-group">
-                  <input type="text" v-model="name" class="form-control" id="name" placeholder="Enter name" name="name">
-                </div>
-                <div class="form-group">
-                  <input type="text" v-model="username" class="form-control" id="username" placeholder="Enter username"
-                    name="username">
-                </div>
-                <div class="form-group">
-                  <input type="text" v-model="email" class="form-control" id="email" placeholder="Enter email" name="email">
-                </div>
-                <div class="form-group">
-                  <input type="text" v-model="password" class="form-control" id="password" placeholder="Enter password"
-                    name="password">
-                </div>
-                <div class="form-group">
-                  <input type="text" v-model="confirm_pass" class="form-control" id="confirm_pass" placeholder="Enter confirm_pass"
-                    name="confirm_pass">
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-success btn-block">Submit</button>
+              <div class="card-body">
+                <form id="signup-form" @submit="checkForm" action="https://vuejs.org/" method="post">
+                  <p v-if="errors.length">
+                    <b>Please correct the following error(s):</b>
+                    <ul>
+                      <li v-for="error in errors">{{ error }}</li>
+                    </ul>
+                  </p>
+                  <div class="form-group">
+                    <input type="text" v-model="name" class="form-control" id="name" placeholder="Enter name" name="name">
                   </div>
+                  <div class="form-group">
+                    <input type="text" v-model="username" class="form-control" id="username" placeholder="Enter username"
+                      name="username">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" v-model="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" v-model="password" class="form-control" id="password" placeholder="Enter password"
+                      name="password">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" v-model="confirm_pass" class="form-control" id="confirm_pass" placeholder="Enter confirm_pass"
+                      name="confirm_pass">
+                  </div>
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-block form-btn">Submit</button>
+                  </div>
+              </div>
+              </form>
             </div>
-            </form>
+          </div>
+
+          <div v-if="login" class="login-cover" id="login-form">
+            <div class="card">
+              <div class="card-header">
+                <div class="row">
+                  <div class="col-md-9">
+                    <h3 class="form-heading">Login</h3>
+                    <p>Enter username and password</p>
+                  </div>
+                  <div class="col-md-3">
+                    <i class="fa fa-lock fa-2x"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <form id="login-form" @submit="loginForm" action="https://vuejs.org/" method="post">
+                  <p v-if="errors.length">
+                    <b>Please correct the following error(s):</b>
+                    <ul>
+                      <li v-for="error in errors">{{ error }}</li>
+                    </ul>
+                  </p>
+                  <div class="form-group">
+                    <input type="text" v-model="username" class="form-control" id="username" placeholder="Enter username"
+                      name="username">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" v-model="password" class="form-control" id="password" placeholder="Enter password"
+                      name="password">
+                  </div>
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-block form-btn">Submit</button>
+                  </div>
+                </form>
+              </div>
+
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
   </div>
-  <script src="./src/form-validation.js"></script>
+  <script src="./src/forms.js"></script>
+  <script src="./src/signup-validation.js"></script>
+  <script src="./src/login-validation.js"></script>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

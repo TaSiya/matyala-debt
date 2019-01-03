@@ -1,16 +1,18 @@
-const app = new Vue({
-  el: '#signup-form',
+const login_app = new Vue({
+  el: '#login-form',
   data: {
     errors: [],
     name: null,
     username: null,
+    signup : false,
+    login : true,
     email: null,
     password : null,
     confirm_pass : null,
     match : false
   },
   methods:{
-    checkForm: function (e) {
+    loginForm: function (e) {
       this.errors = [];
       
       if (this.name && this.username && this.email && this.password && this.confirm_pass) {
